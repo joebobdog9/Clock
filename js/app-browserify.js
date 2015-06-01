@@ -1,24 +1,32 @@
-"use strict";
+// --> date
+//--> HH:MM:SS
+//--> #RRGGBB
+// --> rgb(rr,gg,bb)
+var clock = () => {
+    var now = new Date()
 
-var Promise = require('es6-promise').Promise
-// just Node?
-// var fetch = require('node-fetch')
-// Browserify?
-// require('whatwg-fetch') //--> not a typo, don't store as a var
+    var text = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
 
-// es6 polyfills, powered by babel
-require("babel/register")
+    document.querySelector('.container').innerHTML = text
 
-// other stuff that we don't really use in our own code
-// var Pace = require("../bower_components/pace/pace.js")
+    //get some color
 
-// require your own libraries, too!
-// var Router = require('./app.js')
+    var HMS = [now.getHours(), now.getMinutes(), now.getSeconds()]
 
-// window.addEventListener('load', app)
+    var range = [24, 60, 60]
 
-// function app() {
-    // start app
-    // new Router()
-// }
+    var value = HMS.map((v, i) => Math.floor(v / range[i] * 255))
 
+    var color = `rgb(${value.join(',')})`
+    document.body.style['background'] = color
+
+    var hex = value.toString(16);
+    document.querySelector('.hovercontainer').innerHTML = hex
+
+    var S = `${3*d.getSeconds()}px`
+    document.body.querySelector('hr').style['width'] = S
+
+   
+}
+
+setInterval(clock, 1000) // put in browsrify //
