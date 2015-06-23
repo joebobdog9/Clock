@@ -23,8 +23,8 @@ var clock = () => {
     var hex = value.toString(16);
     document.querySelector('.hovercontainer').innerHTML = hex
 
-    var S = `${3*d.getSeconds()}px`
-    document.body.querySelector('hr').style['width'] = S
+    // var S = `${3*d.getSeconds()}px`
+    // document.body.querySelector('hr').style['width'] = S
 
    
 }
